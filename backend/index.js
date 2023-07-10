@@ -2,6 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const authRoutes = require('./routes/authRoutes');
+const createQuizRoute = require('./routes/createQuizRoute');
+const getQuiz = require('./routes/getQuiz');
+const selectQuizRoute = require('./routes/selectQuizRoute');
+const takeQuizRoute = require('./routes/takeQuizRoute');
+const usersScoreRoute = require('./routes/usersScoreRoute');
+
 
 
 app.use(express.json());
@@ -26,6 +32,11 @@ mongoose.connect(uri, {
   });
 
 app.use('/', authRoutes);
+app.use('/', createQuizRoute);
+app.use('/', getQuiz);
+app.use('/', selectQuizRoute);
+app.use('/', takeQuizRoute);
+app.use('/', usersScoreRoute);
  
 // Start the server
 app.listen(8000, () => {

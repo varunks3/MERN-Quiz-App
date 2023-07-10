@@ -4,9 +4,8 @@ const ViewScores = () => {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    // Fetch data from the API or use the provided data directly
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8000/userscores'); // Replace with your API endpoint
+      const response = await fetch('http://localhost:8000/users-score'); 
       const data = await response.json();
       setUserList(data);
     };
