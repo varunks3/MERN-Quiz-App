@@ -3,7 +3,6 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
 const cookies = new Cookies();
 
 export default function Login() {
@@ -11,7 +10,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(false);
   const history = useHistory();
-  const { quizId } = useParams();
   const register = () => {
     let path = `/participantsignup`;
     history.push(path);

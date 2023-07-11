@@ -23,12 +23,12 @@ const ViewScores = () => {
 
   return (
     <div style={{"width":"50%","margin":"auto"}}>
-      <div style={{"text-align":"right"}}>
+      <div style={{"textAlign":"right"}}>
       <Button  type="submit" variant="danger" onClick={() => logout()}>
         Logout
       </Button>
       </div>
-    <h2 style={{"text-align":"center"}}>User Scores</h2>
+    <h2 style={{"textAlign":"center"}}>User Scores</h2>
     <Table striped bordered >
       <thead>
         <tr>
@@ -38,7 +38,7 @@ const ViewScores = () => {
       </thead>
       <tbody>
         {userList.map((user) => (
-          <tr key={user.id}>
+          <tr key={user.email}>
             <td>{user.email}</td>
             <td>{user.score}</td>
           </tr>

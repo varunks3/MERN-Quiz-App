@@ -19,7 +19,7 @@ function Home() {
   return (
     <div style={{"margin":"auto","width":"50%"}}>
         <h1>Welcome to Quiz</h1>
-        < h2 style={{"margin-top":"6vh"}} >Admin login?</ h2>
+        < h2 style={{"marginTop":"6vh"}} >Admin login?</ h2>
         <Button
           variant="primary"
           type="submit"

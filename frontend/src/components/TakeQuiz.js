@@ -114,7 +114,7 @@ function TakeQuiz() {
           <p>No questions available.</p>
         )}
         <Button
-          style={{ "margin-bottom": "4vh" }}
+          style={{ "marginBottom": "4vh" }}
           variant="primary"
           type="submit"
         >

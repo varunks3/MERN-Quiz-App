@@ -23,8 +23,8 @@ function AdminPanel() {
   return (
     <div style={{
         "display": "flex",
-        "justify-content": "center",
-        "flex-direction": "column",
+        "justifyContent": "center",
+        "flexDirection": "column",
         "width": "50%",
         "margin":"auto",
       }}>
@@ -32,7 +32,7 @@ function AdminPanel() {
         style={{
 
         "margin":"8px",
-        "margin-top":"16px"
+        "margiTop":"16px"
       }}
         variant="primary"
         type="submit"

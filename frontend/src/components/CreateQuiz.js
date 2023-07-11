@@ -113,7 +113,7 @@ function CreateQuiz() {
   const renderQuestions = () => {
     return formData.questions.map((question, index) => (
       <div key={index} style={{"margin":"auto","width":"50%"}}>
-        <h4  style={{"font-weight":"400"}}>Question {index + 1}</h4>
+        <h4  style={{"fontWeight":"400"}}>Question {index + 1}</h4>
         <Form.Label>
           Serial Number:
           <Form.Control
@@ -174,7 +174,7 @@ function CreateQuiz() {
     <div style={{"margin":"auto","width":"50%"}}>
        <h1 style={{"margin":"auto","width":"50%"}}>Create a Quiz</h1>
       <Form onSubmit={handleSubmit}>
-        <h3 style={{"margin":"auto","width":"50%", "font-weight":"400"}}>Title</h3>
+        <h3 style={{"margin":"auto","width":"50%", "fontWeight":"400"}}>Title</h3>
           <Form.Control
             type="text"
             name="title"
@@ -207,7 +207,7 @@ function CreateQuiz() {
         <br />
         <Button  style={{"margin":"4px","width":"50%","float":"right"}} type="submit">Submit</Button>
       </Form>
-      <Button  style={{"margin":"4px","margin-bottom":"18px","width":"50%","float":"right"}} variant="primary" type="submit" onClick={(e) => quiz(e)}>
+      <Button  style={{"margin":"4px","marginBottom":"18px","width":"50%","float":"right"}} variant="primary" type="submit" onClick={(e) => quiz(e)}>
         Show all quizzes
       </Button>
     </div>
