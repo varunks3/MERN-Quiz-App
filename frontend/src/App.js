@@ -23,7 +23,7 @@ function App() {
       <ProtectedRoutes path="/adminpanel" component={AdminPanel} />
       <ProtectedRoutes path="/createquiz" component={CreateQuiz} />
       <Route exact path = "/quizzes" component={Quizzes} /> 
-      <Route exact path = "/take-quiz/" component={TakeQuiz} /> 
+      <ProtectedRoutes exact path = "/take-quiz/" component={TakeQuiz} /> 
       <Route exact path="/participantsignup" component={ParticipantRegister} />
       <Route exact path="/participantlogin" component={ParticipantLogin} />
       {/* <Route exact path = "/take-quiz/:quizId?" component={TakeQuiz} />  */}

@@ -78,7 +78,7 @@ function CreateQuiz() {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8000/createquiz", {
+    fetch("https://quiz-app-backend-varunks3.vercel.app/createquiz", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -86,16 +86,13 @@ function CreateQuiz() {
       body: JSON.stringify(formData),
     })
       .then((response) => {
-        // Handle the response from the server
         if (response.ok) {
           return response.json();
         }
         throw new Error("Failed to create quiz");
       })
       .then((data) => {
-        // Handle the data returned from the server
         console.log(data);
-        // Reset the form
         setFormData({
           title: "",
           questions: [
@@ -109,7 +106,6 @@ function CreateQuiz() {
         });
       })
       .catch((error) => {
-        // Handle any error that occurred during the request
         console.error(error);
       });
   };

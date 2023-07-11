@@ -4,7 +4,6 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function Register() {
-  // initial state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
@@ -19,7 +18,7 @@ export default function Register() {
 
     const configuration = {
       method: "post",
-      url: "http://localhost:8000/participantsignup",
+      url: "https://quiz-app-backend-varunks3.vercel.app/participantsignup",
       data: {
         email,
         password,

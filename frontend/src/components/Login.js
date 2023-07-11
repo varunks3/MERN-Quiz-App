@@ -23,7 +23,7 @@ export default function Login() {
     // set configurations
     const configuration = {
       method: "post",
-      url: "http://localhost:8000/login",
+      url: "https://quiz-app-backend-varunks3.vercel.app/login",
       data: {
         email,
         password,

@@ -21,7 +21,7 @@ export default function Register() {
     // set configurations
     const configuration = {
       method: "post",
-      url: "http://localhost:8000/signup",
+      url: "https://quiz-app-backend-varunks3.vercel.app/signup",
       data: {
         email,
         password,

@@ -13,9 +13,10 @@ export default function ProtectedRoutes({ component: Component, ...rest }) {
       render={(props) => {
         // get cookie from browser if logged in
         const token = cookies.get("TOKEN");
+        const mytoken = cookies.get("mytoken");
 
         // return route if there is a valid token set in the cookie
-        if (token) {
+        if (token || mytoken) {
           return <Component {...props} />;
         } else {
           // return the user to the landing page if there is no valid token set

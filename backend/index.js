@@ -15,7 +15,7 @@ const uri =  "mongodb+srv://varunsbhat3:Sv%40dM4evR@cluster0.hbz9t1b.mongodb.net
 const cors = require('cors');
 app.use(cors());
 const corsOptions = {
-  origin: 'http://localhost:3000', 
+  origin: '*', 
 };
 
 app.use(cors(corsOptions));

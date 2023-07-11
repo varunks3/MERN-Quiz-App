@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
 
 function TakeQuiz() {
   const [data, setData] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [email, setEmail] = useState("");
-  // const [score, setscore] = useState(null);
-  // const [total, setTotal] = useState(null);
+  const logout = () => {
+    cookies.remove("TOKEN", { path: "/" });
+    cookies.remove("mytoken", { path: "/" });
+    window.location.href = "/";
+  }
   const [result, setResult] = useState("");
-
   const handleChange = (event, questionId) => {
     const isChecked = event.target.checked;
     const option = event.target.value;
@@ -42,7 +47,7 @@ function TakeQuiz() {
     };
 
     axios
-      .post("http://localhost:8000/takequiz", formData)
+      .post("https://quiz-app-backend-varunks3.vercel.app/takequiz", formData)
       .then((response) => {
         console.log(response);
         setData(response.data.data);
@@ -55,7 +60,7 @@ function TakeQuiz() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:8000/takequiz")
+      .post("https://quiz-app-backend-varunks3.vercel.app/takequiz")
       .then((response) => {
         const rdata = response.data;
         setData(rdata.data);
@@ -64,6 +69,9 @@ function TakeQuiz() {
   }, []);
   return (
     <div>
+      <Button type="submit" variant="danger" onClick={() => logout()}>
+        Logout
+      </Button>
       <h1>Quiz</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="email">

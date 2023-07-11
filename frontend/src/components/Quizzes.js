@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
-import ParticipantLogin from "./ParticipantLogin";
-import TakeQuiz from "./TakeQuiz";
+import { Button } from "react-bootstrap";
 
 function QuestionList() {
   const [data, setData] = useState([]);
   const history = useHistory();
   const handleShare = (quizId) => {
     const id = quizId;
-    fetch("http://localhost:8000/selectedquiz", {
+    fetch("https://quiz-app-backend-varunks3.vercel.app/selectedquiz", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id }),
     }).then((response) => {
-      // Handle the response from the server
       if (response.ok) {
        return response.json();
       }
@@ -26,7 +23,7 @@ function QuestionList() {
     history.push('/take-quiz');
   };
   useEffect(() => {
-    fetch("http://localhost:8000/quizzes")
+    fetch("https://quiz-app-backend-varunks3.vercel.app/quizzes")
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.log(error));

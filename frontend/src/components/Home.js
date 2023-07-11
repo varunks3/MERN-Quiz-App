@@ -8,24 +8,24 @@ function Home() {
     const history = useHistory();
 
   const admin = () =>{ 
-    let path = `/register`; 
+    let path = `/login`; 
     history.push(path);
   }
 
   const user = () =>{ 
-    let path = `/participantsignup`; 
+    let path = `/participantlogin`; 
     history.push(path);
   }
   return (
     <div style={{"margin":"auto","width":"50%"}}>
         <h1>Welcome to Quiz</h1>
-        < h2 style={{"margin-top":"6vh"}} >Want to create a new quiz?</ h2>
+        < h2 style={{"margin-top":"6vh"}} >Admin login?</ h2>
         <Button
           variant="primary"
           type="submit"
           onClick={(e) => admin(e)}
         >
-          Create Quiz
+          Admin
         </Button>
         <h2>Take quiz</h2>
         <Button

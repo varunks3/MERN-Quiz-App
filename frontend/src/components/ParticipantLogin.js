@@ -23,21 +23,19 @@ export default function Login() {
     // set configurations
     const configuration = {
       method: "post",
-      url: "http://localhost:8000/participantlogin",
+      url: "https://quiz-app-backend-varunks3.vercel.app/participantlogin",
       data: {
         email,
         password,
       },
     };
 
-    // make the API call
     axios(configuration)
       .then((result) => {
-        // set the cookie
-        cookies.set("mytoken", result.data.token, {
+        console.log(result.data.mytoken)
+        cookies.set("mytoken", result.data.mytoken, {
           path: "/",
         });
-        // redirect user to the auth page
         window.location.href = `/take-quiz/`;
         setLogin(true);
       })
@@ -45,15 +43,7 @@ export default function Login() {
         error = new Error();
       });
   };
-  // make the API call
-  //  axios(configuration)
-  //  .then((result) => {
-  //    setLogin(true);
 
-  //  })
-  //  .catch((error) => {
-  //    error = new Error();
-  //  });}
   return (
     <div style={{"margin":"auto","width":"50%"}}>
       <h2>Login</h2>
