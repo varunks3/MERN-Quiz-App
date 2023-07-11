@@ -17,7 +17,6 @@ router.post("/takequiz", async (req, res) => {
       const quizarray = await SelectedQuiz.find();
       const questionDoc = quizarray[0];
       const quizresultarray = await QuizResult.find();
-
       for (let i = 0; i < quizresultarray.length; i++) {
         let score = 0;
         const quizResult = quizresultarray[i];
@@ -39,19 +38,20 @@ router.post("/takequiz", async (req, res) => {
         if (arr1.length !== arr2.length) {
           return false;
         }
-        for (let i = 0; i < arr1.length; i++) {
-          if (arr1[i] !== arr2[i]) {
-            return false;
-          }
+        else if (arr1.toString !== arr2.toString){
+          return false;
         }
         return true;
       }
       const mdata = await QuizResult.findOne({ email: email });
+      const total = myanswers.length
       const score = mdata.score;
-      console.log(score);
-      res.json(data);
+      let resdata = {data,score,total}
+      // console.log({data,score})
+      res.json(resdata);
     } catch (error) {
-      return res.json(data);
+      console.log("catch")
+      return res.json({data});
     }
   });
 
