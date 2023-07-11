@@ -39,7 +39,7 @@ export default function Register() {
   };
 
   return (
-    <>
+    <div style={{"margin":"auto","width":"50%"}}>
       <h2>Register</h2>
       <Form onSubmit={(e) => handleSubmit(e)}>
         {/* email */}
@@ -90,6 +90,6 @@ export default function Register() {
           Login
         </Button>
       </Form>
-    </>
+    </div>
   );
 }

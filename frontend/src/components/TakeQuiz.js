@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import axios from "axios";
 
 function TakeQuiz() {
   const [data, setData] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [email, setEmail] = useState("");
-  // const [score, setScore] = useState("");
+  // const [score, setscore] = useState(null);
+  // const [total, setTotal] = useState(null);
+  const [result, setResult] = useState("");
 
   const handleChange = (event, questionId) => {
     const isChecked = event.target.checked;
@@ -28,7 +31,6 @@ function TakeQuiz() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const formData = {
       email: email,
       myanswers: data.questions.map((q, index) => ({
@@ -38,36 +40,28 @@ function TakeQuiz() {
           .map((item) => item.option),
       })),
     };
-    fetch("http://localhost:8000/takequiz", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    }).then((response) => {
-      // Handle the response from the server
-      if (response.ok) {
-        return response.json();
-      }
-      console.log(formData);
-      throw new Error("Failed to send form data");
-    });
-    console.log(formData);
+
+    axios
+      .post("http://localhost:8000/takequiz", formData)
+      .then((response) => {
+        console.log(response);
+        setData(response.data.data);
+        // setscore(response.data.score);
+        // setTotal(response.data.total);
+        setResult(`Your total score is ${response.data.score} / ${response.data.total}`)
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
-    fetch(`http://localhost:8000/takequiz`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setData(data)
-      )
+    axios
+      .post("http://localhost:8000/takequiz")
+      .then((response) => {
+        const rdata = response.data;
+        setData(rdata.data);
+      })
       .catch((error) => console.log(error));
   }, []);
-  console.log(data);
   return (
     <div>
       <h1>Quiz</h1>
@@ -79,17 +73,21 @@ function TakeQuiz() {
             value={email}
             onChange={handleEmailChange}
             required
+            style={{ width: "50%" }}
           />
         </Form.Group>
         {data.questions ? (
-          <ul>
+          <div>
             {data.questions.map((q, index) => (
-              <li key={q._id}>
-                <h3>{q.question}</h3>
+              <div key={q._id}>
+                <h3>
+                  {q.sino} {q.question}
+                </h3>
                 <ul>
                   {q.options.map((option, optionIndex) => (
-                    <label key={optionIndex}>
-                      <input
+                    <Form.Label key={optionIndex}>
+                      <Form.Text style={{ margin: "4px" }}>{option} </Form.Text>
+                      <Form.Check
                         type="checkbox"
                         checked={checkedItems.some(
                           (item) =>
@@ -98,21 +96,24 @@ function TakeQuiz() {
                         onChange={(e) => handleChange(e, q._id)}
                         value={option}
                       />
-                      {option}
-                    </label>
+                    </Form.Label>
                   ))}
                 </ul>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         ) : (
           <p>No questions available.</p>
         )}
-        <Button variant="primary" type="submit">
+        <Button
+          style={{ "margin-bottom": "4vh" }}
+          variant="primary"
+          type="submit"
+        >
           Submit
         </Button>
+        <h1>{result}</h1>
       </Form>
-      {/* <p>{score}</p> */}
     </div>
   );
 }

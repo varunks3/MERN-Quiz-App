@@ -13,7 +13,7 @@ export default function Login() {
   const history = useHistory();
 
   const register = () =>{ 
-    let path = `/`; 
+    let path = `/register`; 
     history.push(path);
   }
   const handleSubmit = (e) => {
@@ -38,7 +38,7 @@ export default function Login() {
           path: "/",
         });
         // redirect user to the auth page
-        window.location.href = "/createquiz";
+        window.location.href = "/adminpanel";
         setLogin(true);
       })
       .catch((error) => {
@@ -55,7 +55,7 @@ export default function Login() {
 //    error = new Error();
 //  });}
   return (
-    <>
+    <div style={{"margin":"auto","width":"50%"}}>
       <h2>Login</h2>
       <Form onSubmit={(e) => handleSubmit(e)}>
         {/* email */}
@@ -106,6 +106,6 @@ export default function Login() {
           Register
         </Button>
       </Form>
-    </>
+    </div>
   );
 }

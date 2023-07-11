@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
 import ParticipantLogin from "./ParticipantLogin";
 import TakeQuiz from "./TakeQuiz";
 
@@ -33,24 +34,24 @@ function QuestionList() {
 
   return (
     <div>
-      <h1>Quiz</h1>
+      <h1>All Quizzes</h1>
       {data.map((quiz) => (
         <div key={quiz._id}>
           <h2>{quiz.title}</h2>
-          <ul>
+          <ol>
             {quiz.questions.map((q) => (
-              <li key={q._id}>
-                <h3>{q.question}</h3>
+              <div key={q._id}>
+                <h3>{q.sino}{"  "}{q.question}</h3>
                 <ul>
                   {q.options.map((option) => (
                     <li key={option}>{option}</li>
                   ))}
                 </ul>
-              </li>
+              </ div>
             ))}
             <p>Share this quiz</p>
-            <button onClick={() => handleShare(quiz._id)}>Share</button>
-          </ul>
+            <Button onClick={() => handleShare(quiz._id)}>Share</Button>
+          </ol>
         </div>
       ))}
     </div>

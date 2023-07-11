@@ -55,7 +55,7 @@ export default function Login() {
   //    error = new Error();
   //  });}
   return (
-    <>
+    <div style={{"margin":"auto","width":"50%"}}>
       <h2>Login</h2>
       <Form onSubmit={(e) => handleSubmit(e)}>
         {/* email */}
@@ -102,6 +102,6 @@ export default function Login() {
           Register
         </Button>
       </Form>
-    </>
+    </div>
   );
 }
